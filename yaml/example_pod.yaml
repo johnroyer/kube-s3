@@ -3,6 +3,7 @@ kind: Pod
 metadata:
   name: test-pd
 spec:
+  hostNetwork: true
   containers:
   - image: nginx
     imagePullPolicy: IfNotPresent
