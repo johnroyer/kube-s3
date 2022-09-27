@@ -5,6 +5,7 @@ metadata:
 spec:
   containers:
   - image: nginx
+    imagePullPolicy: IfNotPresent
     name: s3-test-container
     securityContext:
       privileged: true
