@@ -10,10 +10,10 @@ spec:
       privileged: true
     volumeMounts:
     - name: mntdatas3fs
-      mountPath: /var/s3:shared
+      mountPath: /usr/share/nginx/html:shared
     livenessProbe:
       exec:
-        command: ["ls", "/var/s3"]
+        command: ["ls", "/usr/share/nginx/html"]
       failureThreshold: 3
       initialDelaySeconds: 10
       periodSeconds: 5

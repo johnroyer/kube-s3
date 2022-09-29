@@ -4,11 +4,11 @@
 
 FROM alpine:latest
 
-ENV MNT_POINT /var/s3
+ENV MNT_POINT /usr/share/nginx/html
 ENV IAM_ROLE=none
 ENV S3_REGION ''
 
-VOLUME /var/s3
+VOLUME /usr/share/nginx/html
 
 
 ARG S3FS_VERSION=v1.89

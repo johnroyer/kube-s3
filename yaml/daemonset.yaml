@@ -19,7 +19,7 @@ spec:
         lifecycle:
           preStop:
             exec:
-              command: ["/bin/sh","-c","umount -f /var/s3"]
+              command: ["/bin/sh","-c","umount -f /usr/share/nginx/html"]
         securityContext:
           privileged: true
           capabilities:
@@ -33,7 +33,7 @@ spec:
         - name: devfuse
           mountPath: /dev/fuse
         - name: mntdatas3fs
-          mountPath: /var/s3:shared
+          mountPath: /usr/share/nginx/html:shared
       volumes:
       - name: devfuse
         hostPath:
