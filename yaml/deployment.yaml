@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-nginx
+spec:
+  selector:
+    matchLabels:
+      run: my-nginx
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        run: my-nginx
+    spec:
+      volumes:
+        - name: mntdatas3fs
+          hostPath:
+            path: /mnt/data-s3-fs
+      containers:
+        - name: my-nginx
+          image: nginx
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: def-http
+              containerPort: 80
+              protocol: TCP
+          volumeMounts:
+            - name: mntdatas3fs
+              mountPath: /var/s3:shared
+          #livenessProbe:
+          #  exec:
+          #    command: ["ls", "/var/s3"]
+          #  failureThreshold: 3
+          #  initialDelaySeconds: 10
+          #  periodSeconds: 5
+          #  successThreshold: 1
+          #  timeoutSeconds: 3
